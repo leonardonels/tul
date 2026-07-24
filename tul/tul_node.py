@@ -18,7 +18,7 @@ class TulNode(Node):
             config = yaml.safe_load(f)['tul']
         self._debug: bool = config['debug']
         self._start_state: AsState = config['start_state']
-        self._auto_shutdown: bool = config.get('auto-shutdown', True)
+        self._auto_shutdown: bool = config.get('auto-shutdown', False)
         self._state_topic: str = config['as_state_topic']
         self._modules_config: list[dict] = config.get('modules', [])
         self.get_logger().info("============ Configuration ===========")
@@ -69,10 +69,10 @@ class TulNode(Node):
 
         for module in self._modules:
             try:
-                self.get_logger().info(f"Notifying module: {module.__class__.__name__} of state change to {self._current_state}")
+                self.get_logger().info(f"Notifying module {module.__class__.__name__}: State changed to {self._current_state}")
                 module.on_state_change(self._current_state)
             except Exception as e:
-                self.get_logger().error(f"Error occurred while notifying module: {module.__class__.__name__} - {e}")
+                self.get_logger().error(f"Error occurred while notifying module {module.__class__.__name__}: {e}")
                 pass
 
     def destroy_node(self) -> None:
@@ -80,7 +80,7 @@ class TulNode(Node):
             try:
                 module._module_stop()
             except Exception as e:
-                self.get_logger().error(f'Error stopping module {module}: {e}')
+                self.get_logger().error(f'Error stopping module {module.__class__.__name__}: {e}')
 
         super().destroy_node()
 

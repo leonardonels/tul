@@ -15,13 +15,13 @@ tul:
       init_on_state: 2
       start_on_state: 3
       stop_on_state: 4
-      output_path: /home/leo/hesai_temp_log.csv
+      output_path: /home/orin/hesai_temp_log.csv
       lidar_temp_topic: /lidar_temp
     - type: bag_recorder
       init_on_state: 2
       start_on_state: 3
       stop_on_state: 4
-      bag_dir: /home/leo/logs/july-2026/bags/ # absolute path
+      bag_dir: /home/orin/logs/july-2026/bags/ # absolute path
       bag_name: rosbag  # name_TIMESTAMP
       date_format: "%Y_%m_%d-%H_%M_%S"
       enable_ids: true
@@ -43,7 +43,7 @@ tul:
       init_on_state: 2
       start_on_state: 3
       stop_on_state: 4
-      pcap_dir: /home/leo/logs/july-2026/pcap/ # absolute path please
+      pcap_dir: /home/orin/logs/july-2026/pcap/ # absolute path please
       pcap_name: tcpdump.pcap  # name_TIMESTAMP
       date_format: "%Y_%m_%d-%H_%M_%S"
       enable_ids: true
@@ -52,8 +52,8 @@ tul:
       init_on_state: 2
       start_on_state: 3
       stop_on_state: 4
-      output_path: /home/leo/logs/candumps/
-      interface: vcan0
+      output_path: /home/orin/logs/candumps/
+      interface: can0
       bitrate: 1000000
       log_name: TIMESTAMP_candump
       enable_ids: true
