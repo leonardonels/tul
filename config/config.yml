@@ -44,7 +44,7 @@ tul:
       start_on_state: 3
       stop_on_state: 4
       pcap_dir: /home/leo/logs/july-2026/pcap/ # absolute path please
-      pcap_name: tcpdump.pcap  # name_TIMESTAMP
+      pcap_name: tcpdump  # name_TIMESTAMP
       date_format: "%Y_%m_%d-%H_%M_%S"
       enable_ids: true
       pcap_args: -i enxc8a362b92514 -s 0 udp and port 2368
